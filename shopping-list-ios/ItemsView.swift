@@ -19,6 +19,13 @@ struct ItemsView: View {
         return ForEach(viewModel.items) { item in
             Text(item.name)
         }
+        .onDelete(perform: delete)
+    }
+    
+    func delete(indexSet: IndexSet) {
+        indexSet.forEach { index in
+            viewModel.delete(itemAt: index)
+        }
     }
 }
 

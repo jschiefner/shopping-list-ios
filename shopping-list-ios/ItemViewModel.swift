@@ -31,4 +31,13 @@ class ItemViewModel: ObservableObject {
         }
     }
     
+    func delete(itemAt index: Int) {
+        db
+            .collection("categories")
+            .document(categoryId)
+            .collection("items")
+            .document(items[index].id!)
+            .delete()
+    }
+    
 }
