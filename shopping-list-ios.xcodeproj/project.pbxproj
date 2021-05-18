@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		24BFCD186C6083CC9930B36B /* Pods_shopping_list_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDDD5EEA369DA65E933E03F /* Pods_shopping_list_ios.framework */; };
 		DD0E18D426544669008E0D0D /* shopping_list_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E18D326544669008E0D0D /* shopping_list_iosApp.swift */; };
-		DD0E18D626544669008E0D0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E18D526544669008E0D0D /* ContentView.swift */; };
+		DD0E18D626544669008E0D0D /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E18D526544669008E0D0D /* ShoppingList.swift */; };
 		DD0E18D826544669008E0D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0E18D726544669008E0D0D /* Assets.xcassets */; };
 		DD0E18DB26544669008E0D0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0E18DA26544669008E0D0D /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -19,7 +19,7 @@
 		980D9B7A7D0AAFE3E4B5FFE3 /* Pods-shopping-list-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopping-list-ios.debug.xcconfig"; path = "Target Support Files/Pods-shopping-list-ios/Pods-shopping-list-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		DD0E18D026544669008E0D0D /* shopping-list-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shopping-list-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD0E18D326544669008E0D0D /* shopping_list_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopping_list_iosApp.swift; sourceTree = "<group>"; };
-		DD0E18D526544669008E0D0D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DD0E18D526544669008E0D0D /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		DD0E18D726544669008E0D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD0E18DA26544669008E0D0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DD0E18DC26544669008E0D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,7 +52,6 @@
 				980D9B7A7D0AAFE3E4B5FFE3 /* Pods-shopping-list-ios.debug.xcconfig */,
 				E0F3065CCDACB273108509BD /* Pods-shopping-list-ios.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -78,7 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0E18D326544669008E0D0D /* shopping_list_iosApp.swift */,
-				DD0E18D526544669008E0D0D /* ContentView.swift */,
+				DD0E18D526544669008E0D0D /* ShoppingList.swift */,
 				DD0E18D726544669008E0D0D /* Assets.xcassets */,
 				DD0E18DC26544669008E0D0D /* Info.plist */,
 				DD0E18D926544669008E0D0D /* Preview Content */,
@@ -207,7 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD0E18D626544669008E0D0D /* ContentView.swift in Sources */,
+				DD0E18D626544669008E0D0D /* ShoppingList.swift in Sources */,
 				DD0E18D426544669008E0D0D /* shopping_list_iosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
