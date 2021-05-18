@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ItemsView: View {
-    @ObservedObject var viewModel: ItemViewModel
+    @ObservedObject var viewModel: ItemsViewModel
     
     init(categoryId: String) {
-        viewModel = ItemViewModel(categoryId: categoryId)
+        viewModel = ItemsViewModel(categoryId: categoryId)
         viewModel.connectData()
     }
     

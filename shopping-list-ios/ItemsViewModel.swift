@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-class ItemViewModel: ObservableObject {
+class ItemsViewModel: ObservableObject {
     @Published var items = [Item]()
     private var db = Firestore.firestore()
     

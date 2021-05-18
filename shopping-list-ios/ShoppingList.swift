@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShoppingList: View {
-    @ObservedObject var viewModel = CategoryViewModel()
+    @ObservedObject var viewModel = CategoriesViewModel()
     
     var body: some View {
         NavigationView {

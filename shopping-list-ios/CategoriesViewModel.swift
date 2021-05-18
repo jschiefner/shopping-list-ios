@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-class CategoryViewModel: ObservableObject {
+class CategoriesViewModel: ObservableObject {
     @Published var categories = [Category]()
     private var db = Firestore.firestore()
     
