@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct shopping_list_iosApp: App {
     var body: some Scene {
-        WindowGroup {
+        FirebaseApp.configure()
+        
+        return WindowGroup {
             ShoppingList()
         }
     }

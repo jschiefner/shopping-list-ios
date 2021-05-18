@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ShoppingList: View {
+    @ObservedObject var viewModel = CategoryViewModel()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List {
+            ForEach(viewModel.categories, id: \.id) { category in
+                Section(header: Text(category.name)) {
+                    ItemsView(categoryId: category.id!)
+                }
+            }
+        }.onAppear() {
+            viewModel.connectData()
+        }
     }
 }
 
