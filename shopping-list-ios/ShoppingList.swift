@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ShoppingList: View {
     @ObservedObject var viewModel = CategoriesViewModel()
+    @State var overlayDisplayed = true
     
     var body: some View {
         NavigationView {
@@ -22,9 +23,20 @@ struct ShoppingList: View {
                 viewModel.connectData()
             }
             .navigationTitle("Shopping List")
-            .navigationBarItems(leading: EditButton())
             .listStyle(PlainListStyle())
+            .navigationBarItems(leading: EditButton(), trailing: addButton)
+            .sheet(isPresented: $overlayDisplayed, content: {
+                ItemForm(overlayDisplayed: $overlayDisplayed)
+            })
         }
+    }
+    
+    var addButton: some View {
+        Image(systemName: "plus")
+            .foregroundColor(.blue)
+            .onTapGesture(perform: {
+                overlayDisplayed.toggle()
+            })
     }
 }
 
