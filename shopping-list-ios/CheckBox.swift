@@ -12,8 +12,10 @@ struct CheckBox: View {
     var callback: () -> Void
 
     var body: some View {
-        // Todo: make this a round circle like in "Reminders", same size, same look just green
-        Image(systemName: checked ? "checkmark.square.fill" : "square")
+        Image(systemName: checked ? "checkmark.circle.fill" : "circle")
+            .resizable()
+            .frame(width: 23, height: 23)
+            .scaledToFit()
             .foregroundColor(checked ? Color(UIColor.systemGreen) : Color.secondary)
             .onTapGesture {
                 self.checked.toggle()
@@ -25,7 +27,7 @@ struct CheckBox: View {
 
 struct CheckBoxView_Previews: PreviewProvider {
     struct CheckBoxViewHolder: View {
-        @State var checked = false
+        @State var checked = true
 
         var body: some View {
             CheckBox(checked: $checked) {

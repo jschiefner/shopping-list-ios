@@ -7,7 +7,6 @@
 
 import Foundation
 import FirebaseFirestore
-import Combine
 
 class ItemViewModel: ObservableObject {
     @Published var item: Item
