@@ -9,15 +9,17 @@ import SwiftUI
 
 struct ItemsView: View {
     @ObservedObject var viewModel: ItemsViewModel
+    let categoryId: String
     
     init(categoryId: String) {
+        self.categoryId = categoryId
         viewModel = ItemsViewModel(categoryId: categoryId)
         viewModel.connectData()
     }
     
     var body: some View {
         return ForEach(viewModel.items) { item in
-            Text(item.name)
+            ItemView(item: item, categoryId: categoryId)
         }
         .onDelete(perform: delete)
     }

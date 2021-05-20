@@ -18,6 +18,10 @@
 		DD28887726544B0F003F645C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28887626544B0F003F645C /* Item.swift */; };
 		DD28887A26544B18003F645C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28887926544B18003F645C /* Category.swift */; };
 		DD28887D26544BAA003F645C /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28887C26544BAA003F645C /* CategoriesViewModel.swift */; };
+		DD6C97122656A2CF0014A602 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97112656A2CF0014A602 /* ItemViewModel.swift */; };
+		DD6C97152656A56E0014A602 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97142656A56E0014A602 /* ItemView.swift */; };
+		DD6C97182656A5B00014A602 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97172656A5B00014A602 /* CheckBox.swift */; };
+		DDDBD8202656B7460072EEAD /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD81F2656B7460072EEAD /* UIDevice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		DD28887626544B0F003F645C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DD28887926544B18003F645C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DD28887C26544BAA003F645C /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		DD6C97112656A2CF0014A602 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		DD6C97142656A56E0014A602 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		DD6C97172656A5B00014A602 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		DDDBD81F2656B7460072EEAD /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		E0F3065CCDACB273108509BD /* Pods-shopping-list-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopping-list-ios.release.xcconfig"; path = "Target Support Files/Pods-shopping-list-ios/Pods-shopping-list-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +107,10 @@
 				DD1EB9B626544E0000EBE02B /* ItemsView.swift */,
 				DD1EB9B926544F2800EBE02B /* ItemsViewModel.swift */,
 				DD1EB9BD265457EC00EBE02B /* GoogleService-Info.plist */,
+				DD6C97112656A2CF0014A602 /* ItemViewModel.swift */,
+				DD6C97142656A56E0014A602 /* ItemView.swift */,
+				DD6C97172656A5B00014A602 /* CheckBox.swift */,
+				DDDBD81F2656B7460072EEAD /* UIDevice.swift */,
 			);
 			path = "shopping-list-ios";
 			sourceTree = "<group>";
@@ -226,8 +238,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0E18D626544669008E0D0D /* ShoppingList.swift in Sources */,
+				DD6C97122656A2CF0014A602 /* ItemViewModel.swift in Sources */,
 				DD1EB9B726544E0000EBE02B /* ItemsView.swift in Sources */,
 				DD28887726544B0F003F645C /* Item.swift in Sources */,
+				DD6C97182656A5B00014A602 /* CheckBox.swift in Sources */,
+				DDDBD8202656B7460072EEAD /* UIDevice.swift in Sources */,
+				DD6C97152656A56E0014A602 /* ItemView.swift in Sources */,
 				DD1EB9BA26544F2800EBE02B /* ItemsViewModel.swift in Sources */,
 				DD28887D26544BAA003F645C /* CategoriesViewModel.swift in Sources */,
 				DD0E18D426544669008E0D0D /* shopping_list_iosApp.swift in Sources */,
