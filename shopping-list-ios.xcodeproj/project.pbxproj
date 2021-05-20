@@ -380,6 +380,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"shopping-list-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 92U4AB62QR;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = "shopping-list-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
