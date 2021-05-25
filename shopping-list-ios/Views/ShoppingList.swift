@@ -16,7 +16,7 @@ struct ShoppingList: View {
             List {
                 ForEach(viewModel.categories, id: \.id) { category in
                     Section(header: Text(category.name)) {
-                        ItemsView(categoryId: category.id!)
+                        ItemsTableView(categoryId: category.id!)
                     }
                 }
             }.onAppear() {

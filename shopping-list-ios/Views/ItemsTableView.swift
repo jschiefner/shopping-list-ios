@@ -7,19 +7,19 @@
 
 import SwiftUI
 
-struct ItemsView: View {
-    @ObservedObject var viewModel: ItemsViewModel
+struct ItemsTableView: View {
+    @ObservedObject var viewModel: ItemsTableViewModel
     let categoryId: String
     
     init(categoryId: String) {
         self.categoryId = categoryId
-        viewModel = ItemsViewModel(categoryId: categoryId)
+        viewModel = ItemsTableViewModel(categoryId: categoryId)
         viewModel.connectData()
     }
     
     var body: some View {
         return ForEach(viewModel.items) { item in
-            ItemView(item: item, categoryId: categoryId)
+            ItemTableView(item: item, categoryId: categoryId)
         }
         .onDelete(perform: delete)
     }
@@ -33,6 +33,6 @@ struct ItemsView: View {
 
 struct ItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemsView(categoryId: "")
+        ItemsTableView(categoryId: "")
     }
 }

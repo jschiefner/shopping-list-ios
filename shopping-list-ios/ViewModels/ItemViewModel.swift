@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-class ItemViewModel: ObservableObject {
+class ItemTableViewModel: ObservableObject {
     @Published var item: Item
     private var document: DocumentReference
     

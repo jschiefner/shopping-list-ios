@@ -1,5 +1,5 @@
 //
-//  ItemViewModel.swift
+//  ItemsTableViewModel.swift
 //  shopping-list-ios
 //
 //  Created by Jonas Schiefner on 18.05.21.
@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-class ItemsViewModel: ObservableObject {
+class ItemsTableViewModel: ObservableObject {
     @Published var items = [Item]()
     private var db = Firestore.firestore()
     

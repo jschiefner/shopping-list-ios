@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ItemView: View {
-    @ObservedObject var viewModel: ItemViewModel
+struct ItemTableView: View {
+    @ObservedObject var viewModel: ItemTableViewModel
     
     init(item: Item, categoryId: String) {
-        self.viewModel = ItemViewModel(item: item, categoryId: categoryId)
+        self.viewModel = ItemTableViewModel(item: item, categoryId: categoryId)
     }
     
     var body: some View {
@@ -24,6 +24,6 @@ struct ItemView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(item: Item(name: "test", completed: true), categoryId: "")
+        ItemTableView(item: Item(name: "test", completed: true), categoryId: "")
     }
 }
