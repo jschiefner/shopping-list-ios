@@ -9,41 +9,60 @@ import SwiftUI
 
 struct ItemForm: View {
     @Binding var overlayDisplayed: Bool
+    @ObservedObject var viewModel: ItemFormViewModel
     
-    @State var name = ""
-    let categories = [
-        Category(id: "a", name: "Obst", position: 1),
-        Category(id: "b", name: "Gemüse", position: 2),
-    ]
-    @State var selectedCategory = Category(id: "a", name: "Obst", position: 1)
-    @State var showAddRule = true
-    @State var showDeleteRule = true
+    init(overlayDisplayed: Binding<Bool>) {
+        self._overlayDisplayed = overlayDisplayed
+        self.viewModel = ItemFormViewModel()
+    }
+    
+    init(overlayDisplayed: Binding<Bool>, item: Item, category: Category) {
+        self._overlayDisplayed = overlayDisplayed
+        self.viewModel = ItemFormViewModel(item: item, category: category)
+    }
     
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Item")) {
-                    TextField("Name", text: $name)
-                    HStack {
-                        Text("Category")
-                        Spacer()
-                        Picker(selectedCategory.name, selection: $selectedCategory) {
-                            ForEach(categories, id: \.id) { category in
-                                Text(category.name).tag(category)
+            Form { // or List
+                TextField("Name", text: $viewModel.item.name, onCommit: viewModel.itemNameOnEnter)
+                Section(header: Text("Category")) {
+                    Toggle(isOn: $viewModel.addNewCategory) {
+                        Text("New Category")
+                    }
+                    .onChange(of: viewModel.addNewCategory, perform: viewModel.newCategoryToggled)
+                    if !viewModel.addNewCategory {
+                        HStack {
+                            Text("Category")
+                            Spacer()
+                            Picker(viewModel.selectedCategory.name, selection: $viewModel.selectedCategory) {
+                                ForEach(viewModel.categories, id: \.id) { category in
+                                    Text(category.name).tag(category)
+                                }
+                            }
+                            .pickerStyle(MenuPickerStyle())
+                            .onChange(of: viewModel.selectedCategory.name, perform: viewModel.onCategoryPicked)
+                        }
+                    } else {
+                        TextField("Category Name", text: $viewModel.newCategory.name, onCommit: viewModel.newCategoryOnEnter)
+                    }
+                }
+                if viewModel.showAddRule || viewModel.showDeleteRule {
+                    Section(header: Text("Rules")) {
+                        if (viewModel.showAddRule) {
+                            Toggle(isOn: $viewModel.addRule) {
+                                Text("\(viewModel.lowercaseItemName) → \(viewModel.category.name)")
                             }
                         }
-                        .pickerStyle(MenuPickerStyle())
+                        if (viewModel.showDeleteRule && viewModel.categoryToDeleteFrom != nil) {
+                            Toggle(isOn: $viewModel.deleteRule) {
+                                Text("\(viewModel.lowercaseItemName) → \(viewModel.categoryToDeleteFrom!.name)")
+                            }
+                            .toggleStyle(SwitchToggleStyle(tint: Color.red))
+                        }
                     }
-                }
-                Section(header: Text("Rules")) {
-                    Toggle(isOn: $showAddRule) {
-                        Text("name -> category")
-                    }
-                    Toggle(isOn: $showDeleteRule) {
-                        Text("name -> category")
-                    }.toggleStyle(SwitchToggleStyle(tint: Color.red))
                 }
             }
+            .listStyle(GroupedListStyle()) // only applies for List instead of Form
             .navigationBarTitle(Text("New Item"), displayMode: .inline)
             .navigationBarItems(leading: cancelButton, trailing: doneButton)
         }
@@ -57,9 +76,10 @@ struct ItemForm: View {
     
     var doneButton: some View {
         Button("Done") {
-            // save item
+            viewModel.save()
             overlayDisplayed.toggle()
         }
+        .disabled(viewModel.canSave)
     }
 }
 

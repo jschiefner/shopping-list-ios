@@ -32,7 +32,7 @@ struct ShoppingList: View {
     }
     
     var addButton: some View {
-        Image(systemName: "plus")
+        Image(systemName: "square.and.pencil")
             .foregroundColor(.blue)
             .onTapGesture(perform: {
                 overlayDisplayed.toggle()

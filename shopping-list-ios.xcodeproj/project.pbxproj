@@ -22,6 +22,7 @@
 		DD6C97122656A2CF0014A602 /* ItemTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97112656A2CF0014A602 /* ItemTableViewModel.swift */; };
 		DD6C97152656A56E0014A602 /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97142656A56E0014A602 /* ItemTableView.swift */; };
 		DD6C97182656A5B00014A602 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97172656A5B00014A602 /* CheckBox.swift */; };
+		DDCBD2EA265D34C00067B26F /* ItemFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBD2E9265D34C00067B26F /* ItemFormViewModel.swift */; };
 		DDDBD8202656B7460072EEAD /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD81F2656B7460072EEAD /* UIDevice.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		DD6C97112656A2CF0014A602 /* ItemTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewModel.swift; sourceTree = "<group>"; };
 		DD6C97142656A56E0014A602 /* ItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
 		DD6C97172656A5B00014A602 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		DDCBD2E9265D34C00067B26F /* ItemFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormViewModel.swift; sourceTree = "<group>"; };
 		DDDBD81F2656B7460072EEAD /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		E0F3065CCDACB273108509BD /* Pods-shopping-list-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopping-list-ios.release.xcconfig"; path = "Target Support Files/Pods-shopping-list-ios/Pods-shopping-list-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 				DD28887C26544BAA003F645C /* CategoriesViewModel.swift */,
 				DD1EB9B926544F2800EBE02B /* ItemsTableViewModel.swift */,
 				DD6C97112656A2CF0014A602 /* ItemTableViewModel.swift */,
+				DDCBD2E9265D34C00067B26F /* ItemFormViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				DD1EB9B726544E0000EBE02B /* ItemsTableView.swift in Sources */,
 				DD28887726544B0F003F645C /* Item.swift in Sources */,
 				DD6C97182656A5B00014A602 /* CheckBox.swift in Sources */,
+				DDCBD2EA265D34C00067B26F /* ItemFormViewModel.swift in Sources */,
 				DDDBD8202656B7460072EEAD /* UIDevice.swift in Sources */,
 				DD6C97152656A56E0014A602 /* ItemTableView.swift in Sources */,
 				DD1EB9BA26544F2800EBE02B /* ItemsTableViewModel.swift in Sources */,
