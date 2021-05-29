@@ -93,6 +93,7 @@ class ItemFormViewModel: ObservableObject {
     }
     
     func itemNameOnEnter() {
+        item.name = item.name.trimmingCharacters(in: .whitespacesAndNewlines)
         fetchExistingCategory(overwrite: true)
     }
     
