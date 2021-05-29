@@ -29,4 +29,8 @@ class ItemTableViewModel: ObservableObject {
     func updateName() {
         document.updateData(["name": item.name])
     }
+    
+    func delete() {
+        document.delete()
+    }
 }
