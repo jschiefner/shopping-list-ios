@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CheckBox: View {
     @Binding var checked: Bool
-    var callback: () -> Void
+    var callback: (() -> Void)?
 
     var body: some View {
         Image(systemName: checked ? "checkmark.circle.fill" : "circle")
@@ -20,7 +20,7 @@ struct CheckBox: View {
             .onTapGesture {
                 self.checked.toggle()
                 UIDevice.vibrate()
-                callback()
+                callback?()
             }
     }
 }
@@ -30,9 +30,7 @@ struct CheckBoxView_Previews: PreviewProvider {
         @State var checked = true
 
         var body: some View {
-            CheckBox(checked: $checked) {
-                
-            }
+            CheckBox(checked: $checked)
         }
     }
 
