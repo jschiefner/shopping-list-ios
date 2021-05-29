@@ -23,6 +23,9 @@ class ItemFormViewModel: ObservableObject {
     var category: Category { return addNewCategory ? newCategory : selectedCategory }
     var existingCategory: Category?
     var ruleExists: Bool { return existingCategory != nil }
+    var addingItem: Bool { return oldCategory == nil }
+    var shouldAddRule: Bool { return showAddRule && addRule }
+    var shouldDeleteRule: Bool { return showDeleteRule && deleteRule }
     var showAddRule: Bool {
         if (addNewCategory) { return true }
         
@@ -50,7 +53,8 @@ class ItemFormViewModel: ObservableObject {
     }
     
     // private properties
-    private var db = Firestore.firestore()
+    private var collection = Firestore.firestore().collection("categories")
+    private var oldCategory: Category?
     
     // initializers
     init() {
@@ -62,6 +66,7 @@ class ItemFormViewModel: ObservableObject {
     
     init(item: Item, category: Category) {
         self.item = item
+        self.oldCategory = category
         self.selectedCategory = category
         self.categories = [
             category,
@@ -70,12 +75,12 @@ class ItemFormViewModel: ObservableObject {
         self.addRule = false
         self.deleteRule = false
         loadCategories()
-        itemNameOnEnter() // fetch category that item should be assigned to
+        fetchExistingCategory(overwrite: false)
     }
     
     // functionality
     func loadCategories() {
-        db.collection("categories").order(by: "position").getDocuments { (querySnapshot, error) in
+        collection.order(by: "position").getDocuments { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No Categories")
                 return
@@ -88,26 +93,7 @@ class ItemFormViewModel: ObservableObject {
     }
     
     func itemNameOnEnter() {
-        db.collection("categories").whereField("rules", arrayContains: lowercaseItemName).getDocuments { (querySnapshot, error) in
-            guard let documents = querySnapshot?.documents else {
-                print("No matching Categories")
-                return
-            }
-            
-            let foundCategories = documents.compactMap({ (queryDocumentSnapshot) -> Category? in
-                return try? queryDocumentSnapshot.data(as: Category.self)
-            })
-            
-            if (foundCategories.count >= 1) { // at least one category found
-                let foundCategory = foundCategories.first!
-                self.selectedCategory = foundCategory
-                self.addNewCategory = false
-                self.existingCategory = foundCategory
-            } else { // no categories found
-                self.addRule = true
-                self.existingCategory = nil
-            }
-        }
+        fetchExistingCategory(overwrite: true)
     }
     
     func newCategoryToggled(_ : Any) {
@@ -142,11 +128,106 @@ class ItemFormViewModel: ObservableObject {
     }
     
     func save() {
-        try? db
-            .collection("categories")
-            .document(category.id!)
-            .collection("items")
-            .document(item.id!)
-            .setData(from: item)
+        addingItem ? saveNewItem() : updateExistingItem()
+    }
+    
+    private func fetchExistingCategory(overwrite: Bool) {
+        collection.whereField("rules", arrayContains: lowercaseItemName).getDocuments { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("No matching Categories")
+                return
+            }
+            
+            let foundCategories = documents.compactMap({ (queryDocumentSnapshot) -> Category? in
+                return try? queryDocumentSnapshot.data(as: Category.self)
+            })
+            
+            if (foundCategories.count >= 1) { // at least one category found
+                let foundCategory = foundCategories.first!
+                self.existingCategory = foundCategory
+                if overwrite {
+                    self.selectedCategory = foundCategory
+                    self.addNewCategory = false
+                }
+            } else { // no categories found
+                if overwrite {
+                    self.addRule = true
+                    self.existingCategory = nil
+                }
+            }
+        }
+    }
+    
+    private func saveNewItem() {
+        if !addNewCategory { // save to existing category
+            try? collection
+                .document(selectedCategory.id!)
+                .collection("items")
+                .document(item.id!)
+                .setData(from: item)
+            // add rule if necessary
+            if shouldAddRule { addRule(category: &selectedCategory) }
+        } else { // save new category
+            if shouldAddRule { newCategory.addRule(item.name) }
+            let categoryDocument = try! collection.addDocument(from: newCategory)
+            newCategory.id = categoryDocument.documentID
+            let _ = try? collection
+                .document(newCategory.id!)
+                .collection("items")
+                .addDocument(from: item)
+        }
+        
+        // delete rule if necessary
+        if shouldDeleteRule { deleteRule(category: &existingCategory!) }
+    }
+    
+    private func updateExistingItem() {
+        if oldCategory == category { // category stays the same
+            // update item in old category
+            let _ = try? collection
+                .document(oldCategory!.id!)
+                .collection("items")
+                .document(item.id!)
+                .setData(from: item)
+            
+            // add rule if necessary
+            if shouldAddRule { addRule(category: &oldCategory!) }
+        } else { // category changes
+            // delete from old category
+            collection
+                .document(oldCategory!.id!)
+                .collection("items")
+                .document(item.id!)
+                .delete()
+            // save to new category
+            if !addNewCategory { // save to existing
+                let _ = try? collection
+                    .document(selectedCategory.id!)
+                    .collection("items")
+                    .addDocument(from: item)
+                // add rule if necessary
+                if shouldAddRule { addRule(category: &selectedCategory) }
+            } else { // save to new category
+                if shouldAddRule { newCategory.addRule(item.name) }
+                let categoryDocument = try! collection.addDocument(from: newCategory)
+                newCategory.id = categoryDocument.documentID
+                let _ = try? collection
+                    .document(newCategory.id!)
+                    .collection("items")
+                    .addDocument(from: item)
+            }
+        }
+        // delete rule if necessary
+        if shouldDeleteRule { deleteRule(category: &existingCategory!) }
+    }
+    
+    private func addRule(category: inout Category) {
+        category.addRule(item.name)
+        try? collection.document(category.id!).setData(from: category)
+    }
+    
+    private func deleteRule(category: inout Category) {
+        category.deleteRule(item.name)
+        try? collection.document(category.id!).setData(from: category)
     }
 }

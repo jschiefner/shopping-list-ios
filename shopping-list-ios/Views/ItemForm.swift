@@ -24,7 +24,10 @@ struct ItemForm: View {
     var body: some View {
         NavigationView {
             Form { // or List
-                TextField("Name", text: $viewModel.item.name, onCommit: viewModel.itemNameOnEnter)
+                HStack {
+                    CheckBox(checked: $viewModel.item.completed)
+                    TextField("Name", text: $viewModel.item.name, onCommit: viewModel.itemNameOnEnter)
+                }
                 Section(header: Text("Category")) {
                     Toggle(isOn: $viewModel.addNewCategory) {
                         Text("New Category")

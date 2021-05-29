@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShoppingList: View {
     @ObservedObject var viewModel = CategoriesViewModel()
-    @State var overlayDisplayed = true
+    @State var overlayDisplayed = false
     
     var body: some View {
         NavigationView {

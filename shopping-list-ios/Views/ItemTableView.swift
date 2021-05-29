@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemTableView: View {
     @ObservedObject var viewModel: ItemTableViewModel
-    @State var overlayDisplayed = true
+    @State var overlayDisplayed = false
     
     let item: Item
     let category: Category
