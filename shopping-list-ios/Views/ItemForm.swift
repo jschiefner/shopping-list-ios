@@ -66,7 +66,7 @@ struct ItemForm: View {
                 }
             }
             .listStyle(GroupedListStyle()) // only applies for List instead of Form
-            .navigationBarTitle(Text("New Item"), displayMode: .inline)
+            .navigationBarTitle(Text(viewModel.addingItem ? "New Item" : "Update Item"), displayMode: .inline)
             .navigationBarItems(leading: cancelButton, trailing: doneButton)
         }
     }
