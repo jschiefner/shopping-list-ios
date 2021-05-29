@@ -53,9 +53,9 @@ struct ItemForm: View {
                                 Text("\(viewModel.lowercaseItemName) → \(viewModel.category.name)")
                             }
                         }
-                        if (viewModel.showDeleteRule && viewModel.categoryToDeleteFrom != nil) {
+                        if (viewModel.showDeleteRule && viewModel.existingCategory != nil) {
                             Toggle(isOn: $viewModel.deleteRule) {
-                                Text("\(viewModel.lowercaseItemName) → \(viewModel.categoryToDeleteFrom!.name)")
+                                Text("\(viewModel.lowercaseItemName) → \(viewModel.existingCategory!.name)")
                             }
                             .toggleStyle(SwitchToggleStyle(tint: Color.red))
                         }
@@ -79,7 +79,7 @@ struct ItemForm: View {
             viewModel.save()
             overlayDisplayed.toggle()
         }
-        .disabled(viewModel.canSave)
+        .disabled(viewModel.saveDisabled)
     }
 }
 

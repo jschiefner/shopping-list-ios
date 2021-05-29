@@ -9,31 +9,50 @@ import Foundation
 import FirebaseFirestore
 
 class ItemFormViewModel: ObservableObject {
+    // Published Properties
     @Published var item: Item
     @Published var addNewCategory = false
     @Published var newCategory = Category(name: "", position: Category.defaultCategory.position+1)
     @Published var addRule = true
     @Published var deleteRule = true
-    @Published var showAddRule = false
-    @Published var showDeleteRule = false
     @Published var selectedCategory: Category
     @Published var categories: [Category]
-    var canSave: Bool {
-        return item.name.isEmpty
+    
+    // Computed Properties
+    var lowercaseItemName: String { return item.name.lowercased() }
+    var category: Category { return addNewCategory ? newCategory : selectedCategory }
+    var existingCategory: Category?
+    var ruleExists: Bool { return existingCategory != nil }
+    var showAddRule: Bool {
+        if (addNewCategory) { return true }
+        
+        if (ruleExists) {
+            return selectedCategory != existingCategory!
+        } else {
+            return true
+        }
     }
-    var lowercaseItemName: String {
-        return item.name.lowercased()
+    var showDeleteRule: Bool {
+        guard ruleExists else { return false }
+        
+        if (addNewCategory) {
+            return true
+        } else {
+            return selectedCategory != existingCategory!
+        }
     }
-    var category: Category {
-        return addNewCategory ? newCategory : selectedCategory
-    }
-    var categoryToDeleteFrom: Category?
-    var ruleExists: Bool {
-        return categoryToDeleteFrom != nil
+    var saveDisabled: Bool {
+        if addNewCategory {
+            return item.name.isEmpty || newCategory.name.isEmpty
+        } else {
+            return item.name.isEmpty
+        }
     }
     
+    // private properties
     private var db = Firestore.firestore()
     
+    // initializers
     init() {
         self.item = Item(name: "", completed: false)
         self.selectedCategory = Category.defaultCategory
@@ -48,9 +67,13 @@ class ItemFormViewModel: ObservableObject {
             category,
             Category.defaultCategory,
         ]
+        self.addRule = false
+        self.deleteRule = false
         loadCategories()
+        itemNameOnEnter() // fetch category that item should be assigned to
     }
     
+    // functionality
     func loadCategories() {
         db.collection("categories").order(by: "position").getDocuments { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
@@ -79,14 +102,10 @@ class ItemFormViewModel: ObservableObject {
                 let foundCategory = foundCategories.first!
                 self.selectedCategory = foundCategory
                 self.addNewCategory = false
-                self.showAddRule = false
-                self.showDeleteRule = false
-                self.categoryToDeleteFrom = foundCategory
+                self.existingCategory = foundCategory
             } else { // no categories found
-                self.showAddRule = true
                 self.addRule = true
-                self.showDeleteRule = false
-                self.categoryToDeleteFrom = nil
+                self.existingCategory = nil
             }
         }
     }
@@ -94,53 +113,31 @@ class ItemFormViewModel: ObservableObject {
     func newCategoryToggled(_ : Any) {
         if ruleExists {
             if addNewCategory {
-                print("here-1")
-                self.showAddRule = true
-                self.showDeleteRule = true
                 self.addRule = true
                 self.deleteRule = true
             } else {
-                if categoryToDeleteFrom! == selectedCategory {
-                    print("here too")
-                    self.showAddRule = false
-                    self.showDeleteRule = false
-                } else {
-                    print("here0")
-                    self.showAddRule = true
+                if existingCategory! != selectedCategory {
                     self.addRule = true
-                    self.showDeleteRule = true
                     self.deleteRule = true
                 }
             }
         } else {
-            print("here1")
-            self.showAddRule = true
             self.addRule = true
-            self.showDeleteRule = false
         }
     }
     
     func newCategoryOnEnter() {
-        print("entered \(newCategory.name)")
+        // pass
     }
     
     func onCategoryPicked(_ : Any) {
         if ruleExists {
-            if categoryToDeleteFrom! == selectedCategory {
-                self.showAddRule = false
-                self.showDeleteRule = false
-            } else {
-                print("here2")
-                self.showAddRule = true
+            if existingCategory! != selectedCategory {
                 self.addRule = true
-                self.showDeleteRule = true
                 self.deleteRule = true
             }
         } else {
-            print("here3")
-            self.showAddRule = true
             self.addRule = true
-            self.showDeleteRule = false
         }
     }
     
