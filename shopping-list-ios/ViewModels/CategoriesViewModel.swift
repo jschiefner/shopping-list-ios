@@ -24,4 +24,15 @@ class CategoriesViewModel: ObservableObject {
             })
         }
     }
+    
+    func delete(itemAt index: Int) {
+        let category = categories[index]
+        guard category != Category.defaultCategory else {
+            print("warning: cannot delete default category")
+            return
+        }
+        db.collection("categories")
+            .document(category.id!)
+            .delete()
+    }
 }

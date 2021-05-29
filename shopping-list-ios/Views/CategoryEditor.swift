@@ -9,10 +9,32 @@ import SwiftUI
 
 struct CategoryEditor: View {
     @Binding var activeSheet: ActiveSheet?
-    
+    @ObservedObject var viewModel = CategoriesViewModel()
+        
     var body: some View {
-        Button("Close") {
-            activeSheet = nil
+        NavigationView {
+            List {
+                ForEach(viewModel.categories, id: \.id) { category in
+                    Text(category.name)
+                }
+                .onDelete(perform: delete)
+            }.onAppear {
+                viewModel.connectData()
+            }
+            .navigationBarTitle("Categories", displayMode: .inline)
+            .listStyle(PlainListStyle())
+            .navigationBarItems(leading: EditButton(), trailing: doneButton)
+        }
+    }
+    
+    var doneButton: some View {
+        Button("Done") { activeSheet = nil }
+    }
+    
+    func delete(indexSet: IndexSet) {
+        // TODO: show alert if default category (pass in @State var that checks if alert should be displayed
+        indexSet.forEach { index in
+            viewModel.delete(itemAt: index)
         }
     }
 }
