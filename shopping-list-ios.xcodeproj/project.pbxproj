@@ -19,6 +19,8 @@
 		DD28887A26544B18003F645C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28887926544B18003F645C /* Category.swift */; };
 		DD28887D26544BAA003F645C /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28887C26544BAA003F645C /* CategoriesViewModel.swift */; };
 		DD479C5526570A790048E6FA /* ItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD479C5426570A790048E6FA /* ItemForm.swift */; };
+		DD69CB812662ED5800FBDC80 /* CategoryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD69CB802662ED5800FBDC80 /* CategoryEditor.swift */; };
+		DD69CB842662F03400FBDC80 /* ActiveSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD69CB832662F03400FBDC80 /* ActiveSheet.swift */; };
 		DD6C97122656A2CF0014A602 /* ItemTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97112656A2CF0014A602 /* ItemTableViewModel.swift */; };
 		DD6C97152656A56E0014A602 /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97142656A56E0014A602 /* ItemTableView.swift */; };
 		DD6C97182656A5B00014A602 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97172656A5B00014A602 /* CheckBox.swift */; };
@@ -42,6 +44,8 @@
 		DD28887926544B18003F645C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DD28887C26544BAA003F645C /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		DD479C5426570A790048E6FA /* ItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemForm.swift; sourceTree = "<group>"; };
+		DD69CB802662ED5800FBDC80 /* CategoryEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditor.swift; sourceTree = "<group>"; };
+		DD69CB832662F03400FBDC80 /* ActiveSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSheet.swift; sourceTree = "<group>"; };
 		DD6C97112656A2CF0014A602 /* ItemTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewModel.swift; sourceTree = "<group>"; };
 		DD6C97142656A56E0014A602 /* ItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
 		DD6C97172656A5B00014A602 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				DD6C97142656A56E0014A602 /* ItemTableView.swift */,
 				DD6C97172656A5B00014A602 /* CheckBox.swift */,
 				DD479C5426570A790048E6FA /* ItemForm.swift */,
+				DD69CB802662ED5800FBDC80 /* CategoryEditor.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				DDDBD81F2656B7460072EEAD /* UIDevice.swift */,
+				DD69CB832662F03400FBDC80 /* ActiveSheet.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -286,7 +292,9 @@
 				DD6C97152656A56E0014A602 /* ItemTableView.swift in Sources */,
 				DD1EB9BA26544F2800EBE02B /* ItemsTableViewModel.swift in Sources */,
 				DD28887D26544BAA003F645C /* CategoriesViewModel.swift in Sources */,
+				DD69CB842662F03400FBDC80 /* ActiveSheet.swift in Sources */,
 				DD0E18D426544669008E0D0D /* shopping_list_iosApp.swift in Sources */,
+				DD69CB812662ED5800FBDC80 /* CategoryEditor.swift in Sources */,
 				DD28887A26544B18003F645C /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ItemForm: View {
-    @Binding var overlayDisplayed: Bool
+    @Binding var activeSheet: ActiveSheet?
     @ObservedObject var viewModel: ItemFormViewModel
     
-    init(overlayDisplayed: Binding<Bool>) {
-        self._overlayDisplayed = overlayDisplayed
+    init(activeSheet: Binding<ActiveSheet?>) {
+        self._activeSheet = activeSheet
         self.viewModel = ItemFormViewModel()
     }
     
-    init(overlayDisplayed: Binding<Bool>, item: Item, category: Category) {
-        self._overlayDisplayed = overlayDisplayed
+    init(activeSheet: Binding<ActiveSheet?>, item: Item, category: Category) {
+        self._activeSheet = activeSheet
         self.viewModel = ItemFormViewModel(item: item, category: category)
     }
     
@@ -73,23 +73,23 @@ struct ItemForm: View {
     
     var cancelButton: some View {
         Button("Cancel") {
-            overlayDisplayed.toggle()
+            activeSheet = nil
         }
     }
     
     var doneButton: some View {
         Button("Done") {
             viewModel.save()
-            overlayDisplayed.toggle()
+            activeSheet = nil
         }
         .disabled(viewModel.saveDisabled)
     }
 }
 
 struct ItemForm_Previews: PreviewProvider {
-    @State static var overlayDisplayed = true
+    @State static var activeSheet: ActiveSheet? = .itemForm
     
     static var previews: some View {
-        ItemForm(overlayDisplayed: $overlayDisplayed)
+        ItemForm(activeSheet: $activeSheet)
     }
 }

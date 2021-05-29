@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShoppingList: View {
     @ObservedObject var viewModel = CategoriesViewModel()
-    @State var overlayDisplayed = false
+    @State var activeSheet: ActiveSheet?
     
     var body: some View {
         NavigationView {
@@ -24,19 +24,31 @@ struct ShoppingList: View {
             }
             .navigationTitle("Shopping List")
             .listStyle(PlainListStyle())
-            .navigationBarItems(leading: EditButton(), trailing: addButton)
-            .sheet(isPresented: $overlayDisplayed, content: {
-                ItemForm(overlayDisplayed: $overlayDisplayed)
-            })
+            .navigationBarItems(leading: EditButton(), trailing: trailingButtons)
+            .sheet(item: $activeSheet) { item in
+                switch item {
+                case .itemForm:
+                    ItemForm(activeSheet: $activeSheet)
+                case .categoryEditor:
+                    CategoryEditor(activeSheet: $activeSheet)
+                }
+            }
         }
     }
     
-    var addButton: some View {
-        Image(systemName: "square.and.pencil")
-            .foregroundColor(.blue)
-            .onTapGesture(perform: {
-                overlayDisplayed.toggle()
-            })
+    var trailingButtons: some View {
+        HStack {
+            Image(systemName: "tray")
+                .foregroundColor(.blue)
+                .onTapGesture(perform: {
+                    activeSheet = .categoryEditor
+                })
+            Image(systemName: "cart.badge.plus")
+                .foregroundColor(.blue)
+                .onTapGesture(perform: {
+                    activeSheet = .itemForm
+                })
+        }
     }
 }
 

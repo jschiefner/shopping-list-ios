@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemTableView: View {
     @ObservedObject var viewModel: ItemTableViewModel
-    @State var overlayDisplayed = false
+    @State var activeSheet: ActiveSheet?
     
     let item: Item
     let category: Category
@@ -28,16 +28,18 @@ struct ItemTableView: View {
         .contextMenu {
             VStack {
                 Button("Edit") {
-                    overlayDisplayed.toggle()
+                    activeSheet = .itemForm
                 }
                 Button("Delete") {
                     viewModel.delete()
                 }
             }
         }
-        .sheet(isPresented: $overlayDisplayed, content: {
-            ItemForm(overlayDisplayed: $overlayDisplayed, item: item, category: category)
-        })
+        .sheet(item: $activeSheet) { value in
+            if value == .itemForm {
+                ItemForm(activeSheet: $activeSheet, item: item, category: category)
+            }
+        }
     }
 }
 
