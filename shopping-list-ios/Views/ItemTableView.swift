@@ -30,6 +30,10 @@ struct ItemTableView: View {
                 Button("Edit") {
                     activeSheet = .itemForm
                 }
+                Button(viewModel.item.completed ? "Uncheck" : "Check") {
+                    viewModel.item.completed.toggle()
+                    viewModel.updateCompleted()
+                }
                 Button("Delete") {
                     viewModel.delete()
                 }

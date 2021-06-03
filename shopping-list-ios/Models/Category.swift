@@ -17,12 +17,10 @@ struct Category: Identifiable, Codable, Hashable {
     static let defaultCategory = Category(id: "BqvRVayFXsRfNVbnQc2C", name: "Default", position: 10000300)
     
     mutating func addRule(_ rule: String) {
-        print("adding rule \(rule.lowercased()) to \(name)")
         rules.append(rule.lowercased())
     }
     
     mutating func deleteRule(_ rule: String) {
-        print("removing rule \(rule.lowercased()) from \(name)")
         rules.removeAll { value in
             value == rule.lowercased()
         }

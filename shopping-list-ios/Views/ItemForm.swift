@@ -23,7 +23,7 @@ struct ItemForm: View {
     
     var body: some View {
         NavigationView {
-            Form { // or List
+            Form {
                 HStack {
                     CheckBox(checked: $viewModel.item.completed)
                     TextField("Name", text: $viewModel.item.name, onCommit: viewModel.itemNameOnEnter)
