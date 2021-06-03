@@ -24,6 +24,8 @@
 		DD6C97122656A2CF0014A602 /* ItemTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97112656A2CF0014A602 /* ItemTableViewModel.swift */; };
 		DD6C97152656A56E0014A602 /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97142656A56E0014A602 /* ItemTableView.swift */; };
 		DD6C97182656A5B00014A602 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6C97172656A5B00014A602 /* CheckBox.swift */; };
+		DD8F1F7F2668E17A00E4DB7A /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F1F7E2668E17A00E4DB7A /* RulesView.swift */; };
+		DD8F1F822668E3F200E4DB7A /* RulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8F1F812668E3F200E4DB7A /* RulesViewModel.swift */; };
 		DDCBD2EA265D34C00067B26F /* ItemFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCBD2E9265D34C00067B26F /* ItemFormViewModel.swift */; };
 		DDDBD8202656B7460072EEAD /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDBD81F2656B7460072EEAD /* UIDevice.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +51,8 @@
 		DD6C97112656A2CF0014A602 /* ItemTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewModel.swift; sourceTree = "<group>"; };
 		DD6C97142656A56E0014A602 /* ItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
 		DD6C97172656A5B00014A602 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		DD8F1F7E2668E17A00E4DB7A /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		DD8F1F812668E3F200E4DB7A /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
 		DDCBD2E9265D34C00067B26F /* ItemFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormViewModel.swift; sourceTree = "<group>"; };
 		DDDBD81F2656B7460072EEAD /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		E0F3065CCDACB273108509BD /* Pods-shopping-list-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopping-list-ios.release.xcconfig"; path = "Target Support Files/Pods-shopping-list-ios/Pods-shopping-list-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				DD1EB9B926544F2800EBE02B /* ItemsTableViewModel.swift */,
 				DD6C97112656A2CF0014A602 /* ItemTableViewModel.swift */,
 				DDCBD2E9265D34C00067B26F /* ItemFormViewModel.swift */,
+				DD8F1F812668E3F200E4DB7A /* RulesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 				DD6C97172656A5B00014A602 /* CheckBox.swift */,
 				DD479C5426570A790048E6FA /* ItemForm.swift */,
 				DD69CB802662ED5800FBDC80 /* CategoryEditor.swift */,
+				DD8F1F7E2668E17A00E4DB7A /* RulesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,11 +287,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD8F1F7F2668E17A00E4DB7A /* RulesView.swift in Sources */,
 				DD479C5526570A790048E6FA /* ItemForm.swift in Sources */,
 				DD0E18D626544669008E0D0D /* ShoppingList.swift in Sources */,
 				DD6C97122656A2CF0014A602 /* ItemTableViewModel.swift in Sources */,
 				DD1EB9B726544E0000EBE02B /* ItemsTableView.swift in Sources */,
 				DD28887726544B0F003F645C /* Item.swift in Sources */,
+				DD8F1F822668E3F200E4DB7A /* RulesViewModel.swift in Sources */,
 				DD6C97182656A5B00014A602 /* CheckBox.swift in Sources */,
 				DDCBD2EA265D34C00067B26F /* ItemFormViewModel.swift in Sources */,
 				DDDBD8202656B7460072EEAD /* UIDevice.swift in Sources */,

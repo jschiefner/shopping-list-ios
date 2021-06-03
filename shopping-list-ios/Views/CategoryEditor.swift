@@ -15,12 +15,7 @@ struct CategoryEditor: View {
         NavigationView {
             List {
                 ForEach(viewModel.categories, id: \.id) { category in
-                    VStack(alignment: .leading) {
-                        Text(category.name)
-                        Text("Position: \(category.position)")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }
+                    NavigationLink(category.name, destination: RulesView(category: category))
                 }
                 .onMove(perform: move)
                 .onDelete(perform: delete)
