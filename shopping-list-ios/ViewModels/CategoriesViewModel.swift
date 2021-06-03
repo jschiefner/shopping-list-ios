@@ -35,4 +35,24 @@ class CategoriesViewModel: ObservableObject {
             .document(category.id!)
             .delete()
     }
+    
+    func move(from: Int, to: Int) {      
+        var category = categories[from]
+        let beforeIndex = to-1
+        let afterIndex = to
+                
+        if beforeIndex < 0 {
+            let after = categories[afterIndex]
+            category.position = after.position / 2
+        } else if afterIndex >= categories.count {
+            let before = categories[beforeIndex]
+            category.position = before.position + 100
+        } else {
+            let before = categories[beforeIndex]
+            let after = categories[afterIndex]
+            category.position = (before.position + after.position) / 2
+        }
+        
+        try? db.collection("categories").document(category.id!).setData(from: category)
+    }
 }

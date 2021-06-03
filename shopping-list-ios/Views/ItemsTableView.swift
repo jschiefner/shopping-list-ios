@@ -8,14 +8,8 @@
 import SwiftUI
 
 struct ItemsTableView: View {
-    @ObservedObject var viewModel: ItemsTableViewModel
     let category: Category
-    
-    init(category: Category) {
-        self.category = category
-        viewModel = ItemsTableViewModel(categoryId: category.id!)
-        viewModel.connectData()
-    }
+    @StateObject var viewModel: ItemsTableViewModel
     
     var body: some View {
         return ForEach(viewModel.items) { item in
@@ -33,6 +27,6 @@ struct ItemsTableView: View {
 
 struct ItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemsTableView(category: Category.defaultCategory)
+        ItemsTableView(category: Category.defaultCategory, viewModel: ItemsTableViewModel(category: Category.defaultCategory))
     }
 }

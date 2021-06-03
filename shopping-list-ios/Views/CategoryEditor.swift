@@ -9,14 +9,20 @@ import SwiftUI
 
 struct CategoryEditor: View {
     @Binding var activeSheet: ActiveSheet?
-    @ObservedObject var viewModel = CategoriesViewModel()
+    @StateObject var viewModel = CategoriesViewModel()
         
     var body: some View {
         NavigationView {
             List {
                 ForEach(viewModel.categories, id: \.id) { category in
-                    Text(category.name)
+                    VStack(alignment: .leading) {
+                        Text(category.name)
+                        Text("Position: \(category.position)")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
                 }
+                .onMove(perform: move)
                 .onDelete(perform: delete)
             }.onAppear {
                 viewModel.connectData()
@@ -28,7 +34,9 @@ struct CategoryEditor: View {
     }
     
     var doneButton: some View {
-        Button("Done") { activeSheet = nil }
+        Button("Done") {
+            activeSheet = nil
+        }
     }
     
     func delete(indexSet: IndexSet) {
@@ -36,6 +44,10 @@ struct CategoryEditor: View {
         indexSet.forEach { index in
             viewModel.delete(itemAt: index)
         }
+    }
+    
+    func move(index: IndexSet, to: Int) {
+        viewModel.move(from: index.first!, to: to)
     }
 }
 

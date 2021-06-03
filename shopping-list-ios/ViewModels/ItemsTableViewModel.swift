@@ -12,14 +12,15 @@ class ItemsTableViewModel: ObservableObject {
     @Published var items = [Item]()
     private var db = Firestore.firestore()
     
-    var categoryId: String
+    var category: Category
     
-    init(categoryId: String) {
-        self.categoryId = categoryId
+    init(category: Category) {
+        self.category = category
+        connectData()
     }
     
     func connectData() {
-        db.collection("categories").document(categoryId).collection("items").addSnapshotListener { (querySnapshot, error) in
+        db.collection("categories").document(category.id!).collection("items").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No item documents")
                 return
@@ -34,7 +35,7 @@ class ItemsTableViewModel: ObservableObject {
     func delete(itemAt index: Int) {
         db
             .collection("categories")
-            .document(categoryId)
+            .document(category.id!)
             .collection("items")
             .document(items[index].id!)
             .delete()
