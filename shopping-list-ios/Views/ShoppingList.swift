@@ -15,9 +15,7 @@ struct ShoppingList: View {
         NavigationView {
             List {
                 ForEach(viewModel.categories, id: \.id) { category in
-                    Section(header: Text(category.name)) {
-                        ItemsTableView(category: category, viewModel: ItemsTableViewModel(category: category))
-                    }
+                    ItemsTableView(category: category, viewModel: ItemsTableViewModel(category: category))
                 }
             }.onAppear() {
                 viewModel.connectData()

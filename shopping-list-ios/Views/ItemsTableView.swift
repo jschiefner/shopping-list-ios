@@ -12,10 +12,14 @@ struct ItemsTableView: View {
     @StateObject var viewModel: ItemsTableViewModel
     
     var body: some View {
-        return ForEach(viewModel.items) { item in
-            ItemTableView(item: item, category: category)
+        if viewModel.showInList {
+            Section(header: Text(category.name)) {
+                ForEach(viewModel.items) { item in
+                    ItemTableView(item: item, category: category)
+                }
+                .onDelete(perform: delete)
+            }
         }
-        .onDelete(perform: delete)
     }
     
     func delete(indexSet: IndexSet) {

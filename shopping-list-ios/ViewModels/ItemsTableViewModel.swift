@@ -11,8 +11,11 @@ import FirebaseFirestore
 class ItemsTableViewModel: ObservableObject {
     @Published var items = [Item]()
     private var db = Firestore.firestore()
-    
     var category: Category
+    
+    var showInList: Bool {
+        return items.count > 0
+    }
     
     init(category: Category) {
         self.category = category
