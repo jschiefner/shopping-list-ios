@@ -25,24 +25,22 @@ struct ItemTableView: View {
             CheckBox(checked: $viewModel.item.completed, callback: viewModel.updateCompleted)
             TextField("Name", text: $viewModel.item.name, onCommit: viewModel.updateName)
         }
-        .contextMenu {
-            VStack {
-                Button("Edit") {
-                    activeSheet = .itemForm
-                }
-                Button(viewModel.item.completed ? "Uncheck" : "Check") {
-                    viewModel.item.completed.toggle()
-                    viewModel.updateCompleted()
-                }
-                Button("Delete") {
-                    viewModel.delete()
-                }
-            }
-        }
+        .contextMenu { contextMenu }
         .sheet(item: $activeSheet) { value in
             if value == .itemForm {
                 ItemForm(activeSheet: $activeSheet, item: item, category: category)
             }
+        }
+    }
+    
+    var contextMenu: some View {
+        VStack {
+            Button(action: { activeSheet = .itemForm }) { Label("Edit", systemImage: "pencil") }
+            Button(action: {
+                    viewModel.item.completed.toggle()
+                    viewModel.updateCompleted()
+            }) { Label(viewModel.item.completed ? "Uncheck" : "Check", systemImage: "checkmark.circle") }
+            Button(action: { viewModel.delete() }) { Label("Delete", systemImage: "trash") }
         }
     }
 }
