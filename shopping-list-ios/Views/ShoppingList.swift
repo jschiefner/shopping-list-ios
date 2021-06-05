@@ -20,9 +20,12 @@ struct ShoppingList: View {
             }.onAppear() {
                 viewModel.connectData()
             }
-            .navigationTitle("Shopping List")
             .listStyle(PlainListStyle())
-            .navigationBarItems(leading: EditButton(), trailing: trailingButtons)
+            .navigationTitle("Shopping List")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) { EditButton() }
+                ToolbarItem(placement: .navigationBarTrailing) { trailingButtons }
+            }
             .sheet(item: $activeSheet) { item in
                 switch item {
                 case .itemForm:
@@ -32,17 +35,18 @@ struct ShoppingList: View {
                 }
             }
         }
+        .accentColor(.green)
     }
     
     var trailingButtons: some View {
         HStack {
             Image(systemName: "tray")
-                .foregroundColor(.blue)
+                .foregroundColor(.green)
                 .onTapGesture(perform: {
                     activeSheet = .categoryEditor
                 })
             Image(systemName: "cart.badge.plus")
-                .foregroundColor(.blue)
+                .foregroundColor(.green)
                 .onTapGesture(perform: {
                     activeSheet = .itemForm
                 })

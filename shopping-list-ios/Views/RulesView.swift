@@ -25,12 +25,14 @@ struct RulesView: View {
             .onDelete(perform: viewModel.delete)
         }
         .navigationTitle(category.name)
-        .navigationBarItems(trailing: addButton)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) { addButton }
+        }
     }
     
     var addButton: some View {
         Image(systemName: "plus")
-            .foregroundColor(.blue)
+            .foregroundColor(.green)
             .onTapGesture(perform: viewModel.addRow)
     }
 }

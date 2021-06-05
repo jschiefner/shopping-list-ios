@@ -22,16 +22,21 @@ struct CategoryEditor: View {
             }.onAppear {
                 viewModel.connectData()
             }
-            .navigationBarTitle("Categories", displayMode: .inline)
             .listStyle(PlainListStyle())
-            .navigationBarItems(leading: EditButton(), trailing: doneButton)
+            .navigationBarTitle("Categories", displayMode: .inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) { EditButton() }
+                ToolbarItem(placement: .navigationBarTrailing) { doneButton }
+            }
         }
+        .accentColor(.green)
     }
     
     var doneButton: some View {
         Button("Done") {
             activeSheet = nil
         }
+        .font(Font.body.weight(.bold))
     }
     
     func delete(indexSet: IndexSet) {
