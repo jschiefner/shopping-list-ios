@@ -27,7 +27,7 @@ class CategoriesViewModel: ObservableObject {
     
     func delete(itemAt index: Int) {
         let category = categories[index]
-        guard category != Category.defaultCategory else {
+        guard !category.isDefault else {
             print("warning: cannot delete default category")
             return
         }

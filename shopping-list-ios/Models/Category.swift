@@ -16,6 +16,10 @@ struct Category: Identifiable, Codable, Hashable {
     
     static let defaultCategory = Category(id: "BqvRVayFXsRfNVbnQc2C", name: "Default", position: 10000300)
     
+    var isDefault: Bool {
+        return id! == Category.defaultCategory.id!
+    }
+    
     mutating func addRule(_ rule: String) {
         rules.append(rule.lowercased())
     }

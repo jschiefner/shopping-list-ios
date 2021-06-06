@@ -16,6 +16,8 @@ struct CategoryEditor: View {
             List {
                 ForEach(viewModel.categories, id: \.id) { category in
                     NavigationLink(category.name, destination: RulesView(category: category))
+                        .disabled(category.isDefault)
+                        .deleteDisabled(category.isDefault)
                 }
                 .onMove(perform: move)
                 .onDelete(perform: delete)

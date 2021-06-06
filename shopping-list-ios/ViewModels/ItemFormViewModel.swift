@@ -28,6 +28,7 @@ class ItemFormViewModel: ObservableObject {
     var shouldDeleteRule: Bool { return showDeleteRule && deleteRule }
     var showAddRule: Bool {
         if (addNewCategory) { return true }
+        if selectedCategory.isDefault { return false }
         
         if (ruleExists) {
             return selectedCategory != existingCategory!
