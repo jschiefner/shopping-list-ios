@@ -36,6 +36,7 @@ struct ShoppingList: View {
             }
         }
         .accentColor(.green)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     var trailingButtons: some View {
