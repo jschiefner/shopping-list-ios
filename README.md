@@ -9,8 +9,8 @@ This app allows me to keep tracks of my shopping list. Items are split in catego
 This is a cleaner reimplementation of the [Android version](https://github.com/jschiefner/shopping-list-android) of the app. The User Interface is implemented with SwiftUI.
 
 <p align="center">
-  <img src="https://github.com/jschiefner/shopping-list-android/blob/main/photoshop/screenshot_shopping_list.png?raw=true" width="350" alt="Shopping List Icon">
-  <img src="https://github.com/jschiefner/shopping-list-android/blob/main/photoshop/screenshot_item_add.png?raw=true" width="350" alt="Shopping List Icon">
+  <img src="https://github.com/jschiefner/shopping-list-ios/blob/main/photoshop/screenshot_shopping_list.png?raw=true" width="350" alt="Shopping List Icon">
+  <img src="https://github.com/jschiefner/shopping-list-ios/blob/main/photoshop/screenshot_item_add.png?raw=true" width="350" alt="Shopping List Icon">
 </p>
 
 #### Get it up and running
