@@ -41,6 +41,14 @@ struct ShoppingList: View {
     
     var trailingButtons: some View {
         HStack {
+            Menu {
+                VStack {
+                    Button(action: { viewModel.deleteAll(onlyCompleted: true) }) { Text("Delete Completed") }
+                    Button(action: { viewModel.deleteAll(onlyCompleted: false) }) { Text("Delete All") }
+                }
+            } label: {
+                Button(action: {}) { Image(systemName: "trash") }
+            }
             Image(systemName: "tray")
                 .foregroundColor(.green)
                 .onTapGesture(perform: {

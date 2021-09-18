@@ -55,4 +55,33 @@ class CategoriesViewModel: ObservableObject {
         
         try? db.collection("categories").document(category.id!).setData(from: category)
     }
+    
+    func deleteAll(onlyCompleted: Bool) {
+        let batch = db.batch()
+        db.collection("categories").getDocuments { (categoriesSnapshot, error) in
+            guard let documents = categoriesSnapshot?.documents else {
+                print("No category documents")
+                return
+            }
+            
+            let batchSize = documents.count
+            var count = 0
+            documents.forEach { (snapshot) in
+                var query: Query = snapshot.reference.collection("items")
+                if (onlyCompleted) { query = query.whereField("completed", isEqualTo: true) }
+                query.getDocuments { (documentSnapshot, error) in
+                    count += 1
+                    guard let documents = documentSnapshot?.documents else {
+                        print("No item documents")
+                        return
+                    }
+                    
+                    if (!documents.isEmpty) {
+                        documents.forEach { (document) in batch.deleteDocument(document.reference) }
+                    }
+                    if (count == batchSize) { batch.commit() }
+                }
+            }
+        }
+    }
 }
