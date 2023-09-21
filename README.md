@@ -17,7 +17,7 @@ This is a cleaner reimplementation of the [Android version](https://github.com/j
 
 This app uses the Google Cloud Firstore Database to keep in sync with all participating devices. In order to use it you have to:
 
-1. create a firebase project at the [Firebase Console](https://console.firebase.google.com)
+1. Create a Firebase project at the [Firebase Console](https://console.firebase.google.com)
 2. Download the `google-services.json` file and put in the `/shopping-list-ios` directory
 3. Install [CocoaPods](https://cocoapods.org/) and run `$ pod install`
 4. Open the `shopping-list-ios.xcworkspace` file in XCode and run the project
