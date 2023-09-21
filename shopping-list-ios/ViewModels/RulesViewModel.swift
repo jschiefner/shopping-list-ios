@@ -28,7 +28,7 @@ class RulesViewModel: ObservableObject {
                 return
             }
             
-            self.category = try! document.data(as: Category.self)!
+            self.category = try! document.data(as: Category.self)
         }
     }
     

@@ -12,9 +12,9 @@
 		DD0E18D626544669008E0D0D /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E18D526544669008E0D0D /* ShoppingList.swift */; };
 		DD0E18D826544669008E0D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0E18D726544669008E0D0D /* Assets.xcassets */; };
 		DD0E18DB26544669008E0D0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0E18DA26544669008E0D0D /* Preview Assets.xcassets */; };
+		DD10B2C32ABBB81C001B6511 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD10B2C22ABBB81C001B6511 /* GoogleService-Info.plist */; };
 		DD1EB9B726544E0000EBE02B /* ItemsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EB9B626544E0000EBE02B /* ItemsTableView.swift */; };
 		DD1EB9BA26544F2800EBE02B /* ItemsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EB9B926544F2800EBE02B /* ItemsTableViewModel.swift */; };
-		DD1EB9BE265457EC00EBE02B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD1EB9BD265457EC00EBE02B /* GoogleService-Info.plist */; };
 		DD28887726544B0F003F645C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28887626544B0F003F645C /* Item.swift */; };
 		DD28887A26544B18003F645C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28887926544B18003F645C /* Category.swift */; };
 		DD28887D26544BAA003F645C /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD28887C26544BAA003F645C /* CategoriesViewModel.swift */; };
@@ -39,9 +39,9 @@
 		DD0E18D726544669008E0D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD0E18DA26544669008E0D0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DD0E18DC26544669008E0D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD10B2C22ABBB81C001B6511 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD1EB9B626544E0000EBE02B /* ItemsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableView.swift; sourceTree = "<group>"; };
 		DD1EB9B926544F2800EBE02B /* ItemsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewModel.swift; sourceTree = "<group>"; };
-		DD1EB9BD265457EC00EBE02B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD28887626544B0F003F645C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DD28887926544B18003F645C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DD28887C26544BAA003F645C /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
@@ -108,10 +108,10 @@
 		DD0E18D226544669008E0D0D /* shopping-list-ios */ = {
 			isa = PBXGroup;
 			children = (
+				DD10B2C22ABBB81C001B6511 /* GoogleService-Info.plist */,
 				DD0E18D326544669008E0D0D /* shopping_list_iosApp.swift */,
 				DD0E18DC26544669008E0D0D /* Info.plist */,
 				DD0E18D726544669008E0D0D /* Assets.xcassets */,
-				DD1EB9BD265457EC00EBE02B /* GoogleService-Info.plist */,
 				DD0E18D926544669008E0D0D /* Preview Content */,
 				DD614B52265D3144002F083B /* Models */,
 				DD614B51265D313C002F083B /* Views */,
@@ -234,7 +234,7 @@
 			files = (
 				DD0E18DB26544669008E0D0D /* Preview Assets.xcassets in Resources */,
 				DD0E18D826544669008E0D0D /* Assets.xcassets in Resources */,
-				DD1EB9BE265457EC00EBE02B /* GoogleService-Info.plist in Resources */,
+				DD10B2C32ABBB81C001B6511 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +314,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					x86_64,
+				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -361,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -416,9 +420,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -439,7 +444,7 @@
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = "shopping-list-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,7 +467,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"shopping-list-ios/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "shopping-list-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
