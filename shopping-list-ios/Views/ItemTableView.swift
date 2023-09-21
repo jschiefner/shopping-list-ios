@@ -31,11 +31,17 @@ struct ItemTableView: View {
                 ItemForm(activeSheet: $activeSheet, item: item, category: category)
             }
         }
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+            Button(action: viewModel.delete) { Label("Delete", systemImage: "trash") }
+                .tint(.red)
+            Button(action: { activeSheet = .itemForm }) { Label("Edit", systemImage: "square.and.pencil") }
+                .tint(.green)
+        }
     }
     
     var contextMenu: some View {
         VStack {
-            Button(action: { activeSheet = .itemForm }) { Label("Edit", systemImage: "pencil") }
+            Button(action: { activeSheet = .itemForm }) { Label("Edit", systemImage: "square.and.pencil") }
             Button(action: {
                     viewModel.item.completed.toggle()
                     viewModel.updateCompleted()
